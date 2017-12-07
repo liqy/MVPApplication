@@ -3,6 +3,8 @@ package com.bwie.mvpapplication.model;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.bwie.mvpapplication.R;
 import com.bwie.mvpapplication.data.Article;
@@ -10,6 +12,8 @@ import com.bwie.mvpapplication.data.Article;
 public class MainActivity extends AppCompatActivity implements ArticleContract.View {
 
     ArticlePresenter presenter;
+
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +25,10 @@ public class MainActivity extends AppCompatActivity implements ArticleContract.V
         presenter.subscribe(this);
 
         presenter.getArticle(1);
+
+//        textView.setOnClickListener(v -> {
+//
+//        });v
 
     }
 

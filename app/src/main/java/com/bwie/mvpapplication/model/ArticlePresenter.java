@@ -34,7 +34,11 @@ public class ArticlePresenter implements ArticleContract.Presenter<MainActivity>
     public void unsubscribe() {
 
 
+
+
     }
+
+
 
     public <T> FlowableTransformer<BaseResponse<T>, T> handleResult() {
         return new FlowableTransformer<BaseResponse<T>, T>() {
@@ -72,12 +76,7 @@ public class ArticlePresenter implements ArticleContract.Presenter<MainActivity>
     public void getArticle(int dev) {
         repository.getArticle(dev)
                 .compose(this.<Article>handleResult())
-                .subscribe(new Consumer<Article>() {
-                    @Override
-                    public void accept(Article articleBaseResponse) throws Exception {
-                        view.showArticle(articleBaseResponse);
-                    }
-                });
+                .subscribe(articleBaseResponse -> view.showArticle(articleBaseResponse));
 
     }
 }
